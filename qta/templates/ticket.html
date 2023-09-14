@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo Ticket</title>
+</head>
+<body>
+
+<h1>Nuevo Ticket</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="ticket_number">Ticket number:</label>
+    <input type="text" id="campo1" name="ticket_number" required><br>
+
+    <label for="call_time">Call time:</label>
+    <input type="datetime-local" id="campo2" name="call_time" required><br>
+
+    <label for="priority">Priority:</label>
+    <input type="text" id="campo3" name="priority" required><br>
+
+    <label for="discussion">Discussion:</label>
+    <input type="text" id="campo4" name="discussion" required><br>
+
+    <label for="state">State:</label>
+    <input type="text" id="campo5" name="state" required><br>
+
+    <label for="source">Source:</label>
+    <input type="text" id="campo6" name="source" required><br>
+
+    <label for="equipment">Equipment:</label>
+    <input type="text" id="campo7" name="equipment" required><br>
+
+    <label for="contact_number">Contact number:</label>
+    <input type="text" id="campo9" name="contact_number" required><br>
+
+    <label for="contact_name">Contact name:</label>
+    <input type="text" id="campo8" name="contact_name" required><br>
+
+    <button type="submit">Crear Ticket</button>
+</form>
+
+</body>
+</html>
