@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Ticket</title>
+</head>
+<body>
+
+<h1>Editar Ticket</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="ticket_number">Ticket number:</label>
+    <input type="text" id="asunto" name="ticket_number" value= "{{ ticket.ticket_number }}""><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="call_time">Call time:</label>
+    <input type="datetime-local" id="asunto" name="call_time" value="{{ ticket.call_time }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="priority">Priority:</label>
+    <input type="text" id="asunto" name="priority" value="{{ ticket.priority }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="discussion">Discussion:</label>
+    <input type="text" id="asunto" name="discussion" value="{{ ticket.discussion }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="state">State:</label>
+    <input type="text" id="asunto" name="state" value="{{ ticket.state }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="source">Source:</label>
+    <input type="text" id="asunto" name="source" value="{{ ticket.source }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="equipment">Equipment:</label>
+    <input type="text" id="asunto" name="equipment" value="{{ ticket.equipment }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="contact_number">Contact number:</label>
+    <input type="text" id="asunto" name="contact_number" value="{{ ticket.contact_number }}"><br>
+
+    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+    <label for="contact_name">Contact name:</label>
+    <input type="text" id="contact_name" name="contact_name" value="{{ ticket.contact_number }}"><br>
+
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+</body>
+</html>
