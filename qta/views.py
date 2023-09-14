@@ -7,8 +7,14 @@ def home(request):
     return render(request, 'home.html')
  
 def mainscreen(request):
-    tickets = Ticket.objects.all()
-    return render(request, 'mainscreen.html',{'tickets':tickets})
+    searchState = request.GET.get('searchState')
+    if searchState:
+        tickets = Ticket.objects.filter(state__icontains=searchState)
+    else:
+          tickets = Ticket.objects.all()
+    return render(request, 'mainscreen.html',{'searchState':searchState, 'tickets':tickets})
+
+    
 
 def more_info(request):
     return render(request, 'more_info.html')
