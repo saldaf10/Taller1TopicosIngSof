@@ -20,20 +20,92 @@
         <a href=''>complete</a></br>
        
          <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for ticket in tickets %}
-            <div class="col">
-               <div class="card">
-                  <div class="card-body">
-                     <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <p class="name">{{ ticket.contact_name }}</p>
-                     <p class="call_time">{{ ticket.call_time }}</p>
-                     <p >Priority:</span><span >{{ ticket.priority }}</p>
-                     <p class="discussion">{{ ticket.discussion}}</p>
-                     <a href='more_info' class="btn btn-primary">More Information</a>
-                  </div>
-               </div>
-            </div>
-            {% endfor %}
+           
+         {% for ticket in tickets %}
+         {% if ticket.priority == "urgente" %}
+         <div class="container" style="width: 638px; height: 139px; position: relative">
+            
+            <div >{{ ticket.state }}</div>
+            <div >{{ ticket.ticket_number }}</div>
+            <div>{{ ticket.equipment }}</div>
+            <div >{{ ticket.contact_name }}</div>
+            <div >{{ ticket.call_time }} </div>
+            <span >Priority:</span><span >{{ ticket.priority }}</span>
+            <a href="more_info">more information</a></br>
+            <div >{{ ticket.discussion}}</div>
+            <a href='more_info'><div style="width: 40px; height: 13px; left: 473px; top: 110px; position: absolute; color: white; font-size: 10px; font-family: Port Lligat Sans; font-weight: 400; word-wrap: break-word">MORE</div></a>
+            <div>-----------------------------------------------------------------------------------------</div>
+
+
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+
+        {% for ticket in tickets %}
+         {% if ticket.priority == "muy importante" %}
+         <div class="container" style="width: 638px; height: 139px; position: relative">
+            
+            <div >{{ ticket.state }}</div>
+            <div >{{ ticket.ticket_number }}</div>
+            <div>{{ ticket.equipment }}</div>
+            <div >{{ ticket.contact_name }}</div>
+            <div >{{ ticket.call_time }} </div>
+            <span >Priority:</span><span >{{ ticket.priority }}</span>
+            <a href="more_info">more information</a></br>
+            <div >{{ ticket.discussion}}</div>
+            <a href='more_info'><div style="width: 40px; height: 13px; left: 473px; top: 110px; position: absolute; color: white; font-size: 10px; font-family: Port Lligat Sans; font-weight: 400; word-wrap: break-word">MORE</div></a>
+            <div>-----------------------------------------------------------------------------------------</div>
+
+
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+        {% for ticket in tickets %}
+         {% if ticket.priority == "importante" %}
+         <div class="container" style="width: 638px; height: 139px; position: relative">
+            
+            <div >{{ ticket.state }}</div>
+            <div >{{ ticket.ticket_number }}</div>
+            <div>{{ ticket.equipment }}</div>
+            <div >{{ ticket.contact_name }}</div>
+            <div >{{ ticket.call_time }} </div>
+            <span >Priority:</span><span >{{ ticket.priority }}</span>
+            <a href="more_info">more information</a></br>
+            <div >{{ ticket.discussion}}</div>
+            <a href='more_info'><div style="width: 40px; height: 13px; left: 473px; top: 110px; position: absolute; color: white; font-size: 10px; font-family: Port Lligat Sans; font-weight: 400; word-wrap: break-word">MORE</div></a>
+            <div>-----------------------------------------------------------------------------------------</div>
+
+
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+        {% for ticket in tickets %}
+         {% if ticket.priority == "normal" %}
+         <div class="container" style="width: 638px; height: 139px; position: relative">
+            
+            <div >{{ ticket.state }}</div>
+            <div >{{ ticket.ticket_number }}</div>
+            <div>{{ ticket.equipment }}</div>
+            <div >{{ ticket.contact_name }}</div>
+            <div >{{ ticket.call_time }} </div>
+            <span >Priority:</span><span >{{ ticket.priority }}</span>
+            <a href="more_info">more information</a></br>
+            <div >{{ ticket.discussion}}</div>
+            <a href='more_info'><div style="width: 40px; height: 13px; left: 473px; top: 110px; position: absolute; color: white; font-size: 10px; font-family: Port Lligat Sans; font-weight: 400; word-wrap: break-word">MORE</div></a>
+            <div>-----------------------------------------------------------------------------------------</div>
+
+
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
          </div>
 
 
