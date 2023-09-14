@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Ticket
 
@@ -14,10 +14,23 @@ def mainscreen(request):
           tickets = Ticket.objects.all()
     return render(request, 'mainscreen.html',{'searchState':searchState, 'tickets':tickets})
 
-    
+def more_info(request, id_unico):
+    ticket = get_object_or_404(Ticket, id_unico=id_unico)
 
-def more_info(request):
-    return render(request, 'more_info.html')
+    if request.method == 'POST':
+        ticket.ticket_number = request.POST.get('ticket_number')
+        ticket.call_time = request.POST.get('call_time')
+        ticket.priority = request.POST.get('priority')
+        ticket.discussion = request.POST.get('discussion')
+        ticket.state = request.POST.get('state')
+        ticket.source = request.POST.get('source')
+        ticket.equipment = request.POST.get('equipment')
+        ticket.contact_number = request.POST.get('contact_number')
+        ticket.contact_name = request.POST.get('contact_name')
+        
+        ticket.save()
+
+    return render(request, 'more_info.html', {'ticket': ticket})
 
 def ticket(request):
     if request.method == 'POST':
