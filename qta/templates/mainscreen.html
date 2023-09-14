@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My project</title>
+    </head>
+    
+    <body>
+
+       
+        <a href="more_info">new ticket</a></br>
+
+
+        <a href=''>New</a></br>
+        <a href=''>in progress</a></br>
+        <a href=''>complete</a></br>
+        <div>-----------------------------------------------------------------------------------------</div>
+
+       
+         {% for ticket in tickets %}
+         <div class="container" style="width: 638px; height: 139px; position: relative">
+            
+            
+            <div >{{ ticket.ticket_number }}</div>
+            <div>{{ ticket.equipment }}</div>
+            <div >{{ ticket.contact_name }}</div>
+            <div >{{ ticket.call_time }} </div>
+            <span >Priority:</span><span >{{ ticket.priority }}</span>
+            <a href="more_info">more information</a></br>
+            <div >{{ ticket.discussion}}</div>
+            <a href='more_info'><div style="width: 40px; height: 13px; left: 473px; top: 110px; position: absolute; color: white; font-size: 10px; font-family: Port Lligat Sans; font-weight: 400; word-wrap: break-word">MORE</div></a>
+            <div>-----------------------------------------------------------------------------------------</div>
+
+
+        </div>
+
+
+        {% endfor %}
+    </body>
+</html>
