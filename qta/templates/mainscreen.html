@@ -10,6 +10,7 @@
     <body>
         {% extends 'base.html' %}
         {% block content %}
+        <img style="width: 110px; height: 55px; left: 0px; top: 0px; position: absolute" src="https://i.postimg.cc/0yk5M4qN/Logo2.png" />
 
        
         <a href="ticket">new ticket</a></br>
@@ -36,10 +37,10 @@
                <div class="card">
                   <div class="card-body">
                      <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <p class="name">{{ ticket.contact_name }}</p>
-                     <p class="call_time">{{ ticket.call_time }}</p>
-                     <p >Priority:</span><span >{{ ticket.priority }}</p>
-                     <p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                     <b>Priority: </b><p>{{ ticket.priority }}</p>
+                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <a href='more_info' class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -52,10 +53,10 @@
                <div class="card">
                   <div class="card-body">
                      <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <p class="name">{{ ticket.contact_name }}</p>
-                     <p class="call_time">{{ ticket.call_time }}</p>
-                     <p >Priority:</span><span >{{ ticket.priority }}</p>
-                     <p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                     <b>Priority: </b><p>{{ ticket.priority }}</p>
+                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <a href='more_info' class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -68,10 +69,10 @@
                <div class="card">
                   <div class="card-body">
                      <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <p class="name">{{ ticket.contact_name }}</p>
-                     <p class="call_time">{{ ticket.call_time }}</p>
-                     <p >Priority:</span><span >{{ ticket.priority }}</p>
-                     <p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                     <b>Priority: </b><p>{{ ticket.priority }}</p>
+                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <a href='more_info' class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -84,10 +85,10 @@
                <div class="card">
                   <div class="card-body">
                      <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <p class="name">{{ ticket.contact_name }}</p>
-                     <p class="call_time">{{ ticket.call_time }}</p>
-                     <p >Priority:</span><span >{{ ticket.priority }}</p>
-                     <p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                     <b>Priority: </b><p>{{ ticket.priority }}</p>
+                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <a href='more_info' class="btn btn-primary">More Information</a>
                   </div>
                </div>

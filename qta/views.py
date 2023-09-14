@@ -48,6 +48,6 @@ def ticket(request):
         nuevo_ticket = Ticket(ticket_number=ticket_number, call_time=call_time, priority=priority, discussion=discussion, state=state, source=source, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
         nuevo_ticket.save()
 
-        return HttpResponse('Ticket creado exitosamente')  
+        return mainscreen(request)
 
     return render(request, 'ticket.html')
