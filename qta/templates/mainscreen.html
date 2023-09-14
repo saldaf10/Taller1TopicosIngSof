@@ -12,13 +12,23 @@
         {% block content %}
 
        
-        <a href="">new ticket</a></br>
+        <a href="ticket">new ticket</a></br>
 
-
-        <a href=''>New</a></br>
-        <a href=''>in progress</a></br>
-        <a href=''>complete</a></br>
        
+        <form action="">
+         <div class="mb-3">
+             <label for="searchState" class="form-label">
+                 Search for State:
+             </label>
+             <input type="text" class="form-control" name="searchState"/>
+         </div>
+         <button type="submit" class="btn btn-primary">Search</button>
+     </form>
+
+     <p> Searching for {{ searchTerm }} </p>
+     <br />
+
+
          <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for ticket in tickets %}
             {% if ticket.priority == "very important" %}
