@@ -11,7 +11,7 @@
     {% csrf_token %}
     <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
     <label for="ticket_number">Ticket number:</label>
-    <input type="text" id="asunto" name="ticket_number" value= "{{ ticket.ticket_number }}""><br>
+    <input type="text" id="asunto" name="ticket_number" value= "{{ ticket.ticket_number }}"><br>
 
     <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
     <label for="call_time">Call time:</label>

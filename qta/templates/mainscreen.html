@@ -12,8 +12,11 @@
         {% block content %}
         <img style="width: 110px; height: 55px; left: 0px; top: 0px; position: absolute" src="https://i.postimg.cc/0yk5M4qN/Logo2.png" />
 
-       
-        <a href="ticket">new ticket</a></br>
+
+        <hr>
+        <h4>{{ user.username | upper}}</h4>
+        
+        <a href={% url "ticket" %}>new ticket</a></br>
 
        
         <form action="">
@@ -41,7 +44,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <a href='more_info' class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -57,7 +60,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <a href='more_info' class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -73,7 +76,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <a href='more_info' class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -89,7 +92,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <a href='more_info' class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>

@@ -131,3 +131,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'qtaproject/static'
 ]
+
+#variable de redireccion de login y logout
+
+LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL='home'

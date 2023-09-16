@@ -15,18 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from qta import views as qtaViews
-
-from django.conf.urls.static import static
-from django.conf import settings
+from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', qtaViews.home),
-    path('mainscreen/',qtaViews.mainscreen),
-    path('mainscreen/more_info/',qtaViews.more_info),
-    path('mainscreen/ticket/',qtaViews.ticket),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('', include('qta.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
