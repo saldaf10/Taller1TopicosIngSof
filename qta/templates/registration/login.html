@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>login</h1>
+<h1 style="color: #ffffff">LOGIN</h1>
 <br>
 <form actions="" method='post'>
     {% csrf_token %}
 
-    <input type="text" name="username" id='' placeholder='Nombre de usuario'>
-    <br>
-
-    <input type="password" name="password" id='' placeholder='Contraseña'>
-    <br>
-
-    <button type='submit'>Iniciar sesion</button>
-    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+           <div class="card">
+              <div class="card-body">
+                 <input type="text" name="username" id='' placeholder='Nombre de usuario'><br>
+                 <input type="password" name="password" id='' placeholder='Contraseña'><br>
+                 <button type='submit' style="background:#023373; color: #ffffff">Iniciar sesion</button>
+              </div>
+           </div>
+        </div>
 
 </form>
 

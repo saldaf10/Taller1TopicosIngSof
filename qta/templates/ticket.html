@@ -9,41 +9,51 @@
 <img style="width: 110px; height: 55px; left: 0px; top: 0px; position: absolute" src="https://i.postimg.cc/0yk5M4qN/Logo2.png" />
 
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
        <div class="card">
           <div class="card-body">
             <h1>Nuevo Ticket</h1>
             <form method="post">
                 {% csrf_token %}
-                <label for="ticket_number">Ticket number:</label>
-                <input type="text" id="campo1" name="ticket_number" required><br>
+                <p for="ticket_number"><b>Ticket number: </b><input type="text" id="campo1" name="ticket_number" required><br></p>
             
-                <label for="call_time">Call time:</label>
-                <input type="datetime-local" id="campo2" name="call_time" required><br>
+                <p for="call_time"><b>Call time: </b><input type="datetime-local" id="campo2" name="call_time" required><br></b><p></p>
+                
+
+                <p for="priority"><b>Priority: </b><select class="form-select form-select-sm" aria-label="Small select example" type="text" id="campo3" name="priority" required>
+                    <option selected>...</option>
+                    <option value="Very important">Very important</option>
+                    <option value="Important">Important</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Regular">Regular</option>
+                  </select><br>
+                
             
-                <label for="priority">Priority:</label>
-                <input type="text" id="campo3" name="priority" required><br>
+                <p for="discussion"><b>Discussion: </b><input type="text" id="campo4" name="discussion" required><br></p>
+                
             
-                <label for="discussion">Discussion:</label>
-                <input type="text" id="campo4" name="discussion" required><br>
+                <p for="state"><b>State: </b><select class="form-select form-select-sm" aria-label="Small select example" type="text" id="campo5" name="state" required>
+                    <option selected>...</option>
+                    <option value="New">New</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Completed">Completed</option>
+                  </select><br>
+                
             
-                <label for="state">State:</label>
-                <input type="text" id="campo5" name="state" required><br>
+                <p for="place"><b>Place: </b><input type="text" id="campo6" name="place" required><br></p>
+                
             
-                <label for="source">Source:</label>
-                <input type="text" id="campo6" name="source" required><br>
+                <p for="equipment"><b>Equipment: </b><input type="text" id="campo7" name="equipment" required><br></p>
+                
             
-                <label for="equipment">Equipment:</label>
-                <input type="text" id="campo7" name="equipment" required><br>
+                <p for="contact_number"><b>Contact number: </b><input type="text" id="campo9" name="contact_number" required><br></p>
+                
             
-                <label for="contact_number">Contact number:</label>
-                <input type="text" id="campo9" name="contact_number" required><br>
+                <p for="contact_name"><b>Contact name: </b><input type="text" id="campo8" name="contact_name" required><br></p>
+
             
-                <label for="contact_name">Contact name:</label>
-                <input type="text" id="campo8" name="contact_name" required><br>
-            
-                <button href="mainscreen" type="submit">Crear Ticket</button>
+                <button href="mainscreen" type="submit" style="background-color: #023373; color: #ffffff">Crear Ticket</button>
             </form>
           </div>
        </div>

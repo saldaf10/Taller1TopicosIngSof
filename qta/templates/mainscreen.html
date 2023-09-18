@@ -10,18 +10,13 @@
     <body>
         {% extends 'base.html' %}
         {% block content %}
-        <img style="width: 110px; height: 55px; left: 0px; top: 0px; position: absolute" src="https://i.postimg.cc/0yk5M4qN/Logo2.png" />
-
 
         <hr>
-        <h4>{{ user.username | upper}}</h4>
-        
-        <a href={% url "ticket" %}>new ticket</a></br>
-
+        <h4 style="color: #ffffff">HI! {{ user.username | upper}}</h4>
        
         <form action="">
          <div class="mb-3">
-             <label for="searchState" class="form-label">
+             <label for="searchState" class="form-label" style="color:#ffffff">
                  Search for State:
              </label>
              <input type="text" class="form-control" name="searchState"/>
@@ -29,13 +24,14 @@
          <button type="submit" class="btn btn-primary">Search</button>
      </form>
 
-     <p> Searching for {{ searchTerm }} </p>
-     <br />
+   </br>
 
+   <a href={% url "ticket" %} class="btn btn-primary">New Ticket</a>
 
+   <br></br>
          <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for ticket in tickets %}
-            {% if ticket.priority == "very important" %}
+            {% if ticket.priority == "Very important" %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -44,6 +40,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
                      <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -51,7 +48,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "important" %}
+            {% if ticket.priority == "Important" %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -60,6 +57,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
                      <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -67,7 +65,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "urgent" %}
+            {% if ticket.priority == "Urgent" %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -76,6 +74,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
                      <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
@@ -83,7 +82,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "regular" %}
+            {% if ticket.priority == "Regular" %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -92,6 +91,7 @@
                      <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
                      <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
                   </div>
                </div>

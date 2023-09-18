@@ -31,7 +31,7 @@ def more_info(request, id_unico):
         ticket.priority = request.POST.get('priority')
         ticket.discussion = request.POST.get('discussion')
         ticket.state = request.POST.get('state')
-        ticket.source = request.POST.get('source')
+        ticket.place = request.POST.get('place')
         ticket.equipment = request.POST.get('equipment')
         ticket.contact_number = request.POST.get('contact_number')
         ticket.contact_name = request.POST.get('contact_name')
@@ -47,13 +47,13 @@ def ticket(request):
         priority = request.POST.get('priority')
         discussion = request.POST.get('discussion')
         state = request.POST.get('state')
-        source = request.POST.get('source')
+        place = request.POST.get('place')
         equipment = request.POST.get('equipment')
         contact_number = request.POST.get('contact_number')
         contact_name = request.POST.get('contact_name')
 
         # Crea el nuevo ticket en la base de datos
-        nuevo_ticket = Ticket(ticket_number=ticket_number, call_time=call_time, priority=priority, discussion=discussion, state=state, source=source, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
+        nuevo_ticket = Ticket(ticket_number=ticket_number, call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
         nuevo_ticket.save()
 
         return mainscreen(request)
