@@ -63,6 +63,6 @@ def ticket(request):
         nuevo_ticket = Ticket(ticket_number=ticket_number, call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
         nuevo_ticket.save()
 
-        return mainscreen(request)
+        return redirect('mainscreen')
 
     return render(request, 'ticket.html')
