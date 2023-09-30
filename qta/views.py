@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Ticket
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+import datetime
 
 
 # Create your views here.
@@ -40,6 +41,12 @@ def more_info(request, id_unico):
         ticket.first_follow_up = request.POST.get('first_follow_up')
         ticket.second_follow_up = request.POST.get('second_follow_up')
         ticket.third_follow_up = request.POST.get('third_follow_up')
+        
+        # Convertir la fecha a un objeto datetime
+        call_time_datetime = datetime.datetime.strptime(ticket.call_time, '%d-%m-%Y %H:%M:%S')
+
+        # Actualizar el campo call_time con el objeto datetime
+        ticket.call_time = call_time_datetime
         
         ticket.save()
         

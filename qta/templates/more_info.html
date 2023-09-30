@@ -21,7 +21,7 @@
                         
                         <p for="ticket.ticket_number"><b>Ticket ID: </b><input type="text" id="ticket_number" name="ticket_number" value="{{ ticket.ticket_number }}" readonly></p>
 
-                        <p for="call_time"><b>Call time: </b><input type="datetime-local" id="campo2" name="call_time" value="{{ ticket.call_time }}"><br></b><p></p>
+                        <p for="call_time"><b>Call time: </b><input type="text" id="call_time" name="call_time" value="{{ ticket.call_time | date:'d-m-Y H:i:s' }}" readonly></p>
 
                         <p for="ticket.priority"><b>Priority: </b><input type="text" id="priority" name="priority" value="{{ ticket.priority }}" readonly></p>
                     
