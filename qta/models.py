@@ -11,3 +11,6 @@ class Ticket(models.Model):
     equipment = models.CharField(max_length=20)
     contact_number = models.CharField(max_length=20)
     contact_name = models.CharField(max_length=20)
+    first_follow_up = models.CharField(max_length=500)
+    second_follow_up = models.CharField(max_length=500)
+    third_follow_up = models.CharField(max_length=500)
