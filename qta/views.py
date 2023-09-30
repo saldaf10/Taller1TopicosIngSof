@@ -15,6 +15,7 @@ def exit(request):
  
 @login_required
 def mainscreen(request):
+    
     searchState = request.GET.get('searchState')
     if searchState:
         tickets = Ticket.objects.filter(state__icontains=searchState)
@@ -24,6 +25,7 @@ def mainscreen(request):
 
 def more_info(request, id_unico):
     ticket = get_object_or_404(Ticket, id_unico=id_unico)
+    
 
     if request.method == 'POST':
         ticket.ticket_number = request.POST.get('ticket_number')
@@ -35,8 +37,13 @@ def more_info(request, id_unico):
         ticket.equipment = request.POST.get('equipment')
         ticket.contact_number = request.POST.get('contact_number')
         ticket.contact_name = request.POST.get('contact_name')
+        ticket.first_follow_up = request.POST.get('first_follow_up')
+        ticket.second_follow_up = request.POST.get('second_follow_up')
+        ticket.third_follow_up = request.POST.get('third_follow_up')
         
         ticket.save()
+        
+        return redirect('mainscreen')
 
     return render(request, 'more_info.html', {'ticket': ticket})
 

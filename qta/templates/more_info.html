@@ -4,49 +4,63 @@
     <title>Editar Ticket</title>
 </head>
 <body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <img style="width: 110px; height: 55px; left: 0px; top: 0px; position: absolute" src="https://i.postimg.cc/0yk5M4qN/Logo2.png" />
 
-<h1>Editar Ticket</h1>
+    <form method="post">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+               <div class="card">
+                  <div class="card-body">
+                    <h1>Editar Ticket</h1>
+                    <form method="post">
+                        {% csrf_token %}
 
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="ticket_number">Ticket number:</label>
-    <input type="text" id="asunto" name="ticket_number" value= "{{ ticket.ticket_number }}"><br>
+                        <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+                        
+                        <p for="ticket.ticket_number"><b>Ticket ID: </b><input type="text" id="ticket_number" name="ticket_number" value="{{ ticket.ticket_number }}" readonly></p>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="call_time">Call time:</label>
-    <input type="datetime-local" id="asunto" name="call_time" value="{{ ticket.call_time }}"><br>
+                        <p for="call_time"><b>Call time: </b><input type="datetime-local" id="campo2" name="call_time" value="{{ ticket.call_time }}"><br></b><p></p>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="priority">Priority:</label>
-    <input type="text" id="asunto" name="priority" value="{{ ticket.priority }}"><br>
+                        <p for="ticket.priority"><b>Priority: </b><input type="text" id="priority" name="priority" value="{{ ticket.priority }}" readonly></p>
+                    
+                        <p for="ticket.discussion"><b>Discussion: </b><input type="text" id="discussion" name="discussion" value="{{ ticket.discussion }}" readonly></p>
+                    
+                        <p for="state"><b>State: </b><select class="form-select form-select-sm" aria-label="Small select example" type="text" id="campo5" name="state" required>
+                            <option selected>{{ticket.state }}</option>
+                            <option value="New">New</option>
+                            <option value="In progress">In progress</option>
+                            <option value="Completed">Completed</option>
+                          </select><br>
+                        
+                        <p for="ticket.place"><b>Place: </b><input type="text" id="place" name="place" value="{{ ticket.place }}" readonly></p>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="discussion">Discussion:</label>
-    <input type="text" id="asunto" name="discussion" value="{{ ticket.discussion }}"><br>
+                        <p for="ticket.equipment"><b>Equipment: </b><input type="text" id="equipment" name="equipment" value="{{ ticket.equipment }}" readonly></p>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="state">State:</label>
-    <input type="text" id="asunto" name="state" value="{{ ticket.state }}"><br>
+                        <p for="ticket.contact_name"><b>Contact Name: </b><input type="text" id="contact_name" name="contact_name" value="{{ ticket.contact_name }}" readonly></p>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="source">Source:</label>
-    <input type="text" id="asunto" name="source" value="{{ ticket.source }}"><br>
+                        <p for="ticket.contact_number"><b>Contact Number: </b><input type="text" id="contact_number" name="contact_number" value="{{ ticket.contact_number }}" readonly></p>
+                    
+                        <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+                        <label for="first_follow_up"><b>Fisrt Follow-up: </b></label>
+                        <input type="text" id="first_follow_up" name="first_follow_up" value="{{ ticket.first_follow_up }}"><br>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="equipment">Equipment:</label>
-    <input type="text" id="asunto" name="equipment" value="{{ ticket.equipment }}"><br>
+                        <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+                        <label for="second_follow_up"><b>Second Follow-up: </b></label>
+                        <input type="text" id="second_follow_up" name="second_follow_up" value="{{ ticket.second_follow_up }}"><br>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="contact_number">Contact number:</label>
-    <input type="text" id="asunto" name="contact_number" value="{{ ticket.contact_number }}"><br>
+                        <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
+                        <label for="third_follow_up"><b>Third Follow-up: </b></label>
+                        <input type="text" id="third_follow_up" name="third_follow_up" value="{{ ticket.third_follow_up }}"><br>
 
-    <input type="hidden" name="id_unico" value="{{ ticket.id_unico }}">
-    <label for="contact_name">Contact name:</label>
-    <input type="text" id="contact_name" name="contact_name" value="{{ ticket.contact_number }}"><br>
+                        <button  type="submit" style="background-color: #023373; color: #ffffff">Guardar Cambios</button>
 
-    <button type="submit">Guardar Cambios</button>
-</form>
-
+                    </form>
+                  </div>
+               </div>
+            </div>
+    </form>
+{% endblock content %}
 </body>
 </html>

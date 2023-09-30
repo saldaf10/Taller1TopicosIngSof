@@ -41,7 +41,7 @@
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -58,7 +58,7 @@
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -75,7 +75,7 @@
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info"  ticket.ticket_number %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
@@ -92,7 +92,7 @@
                      <b>Priority: </b><p>{{ ticket.priority }}</p>
                      <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
                      <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" %} class="btn btn-primary">More Information</a>
+                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
                   </div>
                </div>
             </div>
