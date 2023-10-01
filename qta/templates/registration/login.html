@@ -1,21 +1,63 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1 style="color: #ffffff">LOGIN</h1>
-<br>
-<form actions="" method='post'>
-    {% csrf_token %}
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-           <div class="card">
-              <div class="card-body">
-                 <input type="text" name="username" id='' placeholder='Nombre de usuario'><br>
-                 <input type="password" name="password" id='' placeholder='Contraseña'><br>
-                 <button type='submit' style="background:#023373; color: #ffffff">Iniciar sesion</button>
-              </div>
-           </div>
-        </div>
-
-</form>
-
-{% endblock %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <title>Login</title>
+   </head>
+   <body>
+      {% extends 'base.html' %}
+      {% block content %}
+      <section class="vh-100" style="background-color: #63E0FF;">
+         <div class="container py-5 h-100">
+         <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+               <div class="card" style="border-radius: 1rem;">
+               <div class="row g-0">
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                     <img src="https://www.enfermeriayseguridaddelpaciente.com/wp-content/uploads/2023/09/doctor-1228629_1920.jpg"
+                     alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                  </div>
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                     <div class="card-body p-4 p-lg-5 text-black">
+      
+                     <form actions="" method='post'>
+                        {% csrf_token %}
+      
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                           <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                           <span class="h1 fw-bold mb-0">QTA</span>
+                        </div>
+      
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+      
+                        <div class="form-outline mb-4">
+                           <input type="text" name="username" id='' placeholder='Nombre de usuario' class="form-control form-control-lg" />
+                           <label class="form-label" for="form2Example17">Username</label>
+                        </div>
+      
+                        <div class="form-outline mb-4">
+                           <input type="password" name="password" id='' placeholder='Contraseña' class="form-control form-control-lg" />
+                           <label class="form-label" for="form2Example27">Password</label>
+                        </div>
+      
+                        <div class="pt-1 mb-4">
+                           <button type='submit' class="btn btn-dark btn-lg btn-block">Login</button>
+                        </div>
+      
+                        {% comment %} <a class="small text-muted" href="#!">Forgot password?</a>
+                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
+                           style="color: #393f81;">Register here</a></p>
+                        <a href="#!" class="small text-muted">Terms of use.</a>
+                        <a href="#!" class="small text-muted">Privacy policy</a> {% endcomment %}
+                     </form>
+      
+                     </div>
+                  </div>
+               </div>
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      {% endblock %}
+   </body>
+</html>

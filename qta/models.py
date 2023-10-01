@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.timezone import now
+from datetime import datetime
 
 # Create your models here.
 class Ticket(models.Model):
@@ -15,3 +17,10 @@ class Ticket(models.Model):
     second_follow_up = models.CharField(max_length=500, default="")
     third_follow_up = models.CharField(max_length=500, default="")
     id_unico = models.IntegerField(primary_key=True)
+    def get_time_elapsed(self):
+        """Calcula el tiempo transcurrido desde la llamada."""
+        call_time = self.call_time
+        now = datetime.now(tz=call_time.tzinfo)
+        return now - call_time
+
+    time_elapse = property(get_time_elapsed)
