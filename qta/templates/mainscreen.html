@@ -19,7 +19,12 @@
              <label for="searchState" class="form-label" style="color:#ffffff">
                  Search for State:
              </label>
-             <input type="text" class="form-control" name="searchState"/>
+             <select class="form-control" aria-label="Small select example" type="text" id="campo5" name="searchState">
+               <option selected>{{ticket.state }}</option>
+               <option value="New">New</option>
+               <option value="In progress">In progress</option>
+               <option value="Completed">Completed</option>
+             </select><br>
          </div>
          <button type="submit" class="btn btn-primary">Search</button>
      </form>
@@ -31,7 +36,7 @@
    <br></br>
          <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for ticket in tickets %}
-            {% if ticket.priority == "Very important" %}
+            {% if ticket.priority == "Very important" and ticket.state != 'Completed'%}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -49,7 +54,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Important" %}
+            {% if ticket.priority == "Important" and ticket.state != 'Completed' %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -67,7 +72,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Urgent" %}
+            {% if ticket.priority == "Urgent" and ticket.state != 'Completed' %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
@@ -85,7 +90,7 @@
             {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Regular" %}
+            {% if ticket.priority == "Regular" and ticket.state != 'Completed' %}
             <div class="col">
                <div class="card">
                   <div class="card-body">
