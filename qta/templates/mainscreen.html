@@ -1,137 +1,107 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>My project</title>
-    </head>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>My project</title>
+   </head>
     
-    <body>
-        {% extends 'base.html' %}
-        {% block content %}
-
-        <hr>
-        <h4 style="color: #ffffff">HI! {{ user.username | upper}}</h4>
-       
-        <form action="">
-         <div class="mb-3">
-             <label for="searchState" class="form-label" style="color:#ffffff">
-                 Search for State:
-             </label>
-             <select class="form-control" aria-label="Small select example" type="text" id="campo5" name="searchState">
-               <option selected>{{ticket.state }}</option>
-               <option value="New">New</option>
-               <option value="In progress">In progress</option>
-               <option value="Completed">Completed</option>
-             </select><br>
-         </div>
-         <button type="submit" class="btn btn-primary">Search</button>
-     </form>
-
-   </br>
-
-   <a href={% url "ticket" %} class="btn btn-primary">New Ticket</a>
-
-   <br></br>
+   <body>
+      {% extends 'base.html' %}
+      {% block content %}
+         <br>
+            <h4 style="color: #ffffff">HI! {{ user.username | upper}}</h4>       
+            <form action="">
+               <div class="mb-3">
+                  <label for="searchState" class="form-label" style="color:#ffffff">
+                     Search for State:
+                  </label>
+                  <select class="form-control" aria-label="Small select example" type="text" id="campo5" name="searchState">
+                     <option selected>{{ticket.state }}</option>
+                     <option value="New">New</option>
+                     <option value="In progress">In progress</option>
+                     <option value="Completed">Completed</option>
+                  </select>
+               </div>
+               <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+         </br>
+         <a href={% url "ticket" %} class="btn btn-primary">New Ticket</a>
+         <br></br>
          <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for ticket in tickets %}
-            {% if ticket.priority == "Very important" and ticket.state != 'Completed'%}
-            <div class="col">
-               <div class="card">
-                  <div class="card-body">
-                     <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
-                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
-                     <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
-                     <b>Priority: </b><p>{{ ticket.priority }}</p>
-                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+               {% if ticket.priority == "Very important" and ticket.state != 'Completed'%}
+                  <div class="col">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
+                           <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                           <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                           <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
+                           <b>Priority: </b><p>{{ ticket.priority }}</p>
+                           <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                           <b>Place: </b><p class="place">{{ ticket.place}}</p>
+                           <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-            {% endif %}
+               {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Important" and ticket.state != 'Completed' %}
-            <div class="col">
-               <div class="card">
-                  <div class="card-body">
-                     <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
-                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
-                     <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
-                     <b>Priority: </b><p>{{ ticket.priority }}</p>
-                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+               {% if ticket.priority == "Important" and ticket.state != 'Completed' %}
+                  <div class="col">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
+                           <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                           <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                           <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
+                           <b>Priority: </b><p>{{ ticket.priority }}</p>
+                           <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                           <b>Place: </b><p class="place">{{ ticket.place}}</p>
+                           <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-            {% endif %}
+               {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Urgent" and ticket.state != 'Completed' %}
-            <div class="col">
-               <div class="card">
-                  <div class="card-body">
-                     <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
-                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
-                     <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
-                     <b>Priority: </b><p>{{ ticket.priority }}</p>
-                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info"  ticket.ticket_number %} class="btn btn-primary">More Information</a>
+               {% if ticket.priority == "Urgent" and ticket.state != 'Completed' %}
+                  <div class="col">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
+                           <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                           <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                           <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
+                           <b>Priority: </b><p>{{ ticket.priority }}</p>
+                           <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                           <b>Place: </b><p class="place">{{ ticket.place}}</p>
+                           <a href={% url "more_info"  ticket.ticket_number %} class="btn btn-primary">More Information</a>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-            {% endif %}
+               {% endif %}
             {% endfor %}
             {% for ticket in tickets %}
-            {% if ticket.priority == "Regular" and ticket.state != 'Completed' %}
-            <div class="col">
-               <div class="card">
-                  <div class="card-body">
-                     <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
-                     <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
-                     <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
-                     <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
-                     <b>Priority: </b><p>{{ ticket.priority }}</p>
-                     <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-                     <b>Place: </b><p class="place">{{ ticket.place}}</p>
-                     <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+               {% if ticket.priority == "Regular" and ticket.state != 'Completed' %}
+                  <div class="col">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
+                           <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
+                           <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
+                           <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
+                           <b>Priority: </b><p>{{ ticket.priority }}</p>
+                           <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
+                           <b>Place: </b><p class="place">{{ ticket.place}}</p>
+                           <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-            {% endif %}
+               {% endif %}
             {% endfor %}
          </div>
-
-
-        </div>
-        {% endblock content %}
-    </body>
-    <script>
-      function calculateTimeElapsed(callTime) {
-        // Convertir la fecha y hora a un objeto Date
-        var callTimeDate = new Date(callTime);
-      
-        // Obtener la fecha y hora actual
-        var now = new Date();
-      
-        // Calcular la diferencia entre las dos fechas
-        var difference = now - callTimeDate;
-      
-        // Convertir la diferencia en milisegundos
-        var differenceInMilliseconds = difference.getTime();
-      
-        // Convertir la diferencia en segundos
-        var differenceInSeconds = differenceInMilliseconds / 1000;
-      
-        // Devolver la diferencia en segundos
-        return differenceInSeconds;
-      }
-   </script>
+      {% endblock content %}
+   </body>
 </html>
