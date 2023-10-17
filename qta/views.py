@@ -67,8 +67,9 @@ def ticket(request):
         contact_name = request.POST.get('contact_name')
 
         # Crea el nuevo ticket en la base de datos
-        nuevo_ticket = Ticket(ticket_number=ticket_number, call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
+        nuevo_ticket = Ticket(ticket_number=Ticket.objects.count(), call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
         nuevo_ticket.save()
+        
 
         return redirect('mainscreen')
 
