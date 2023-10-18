@@ -29,7 +29,6 @@ def more_info(request, id_unico):
     
 
     if request.method == 'POST':
-        ticket.ticket_number = request.POST.get('ticket_number')
         ticket.call_time = request.POST.get('call_time')
         ticket.priority = request.POST.get('priority')
         ticket.discussion = request.POST.get('discussion')
@@ -67,7 +66,7 @@ def ticket(request):
         contact_name = request.POST.get('contact_name')
 
         # Crea el nuevo ticket en la base de datos
-        nuevo_ticket = Ticket(ticket_number=Ticket.objects.count(), call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
+        nuevo_ticket = Ticket(ticket_number=Ticket.objects.count()+1, call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
         nuevo_ticket.save()
         
 
