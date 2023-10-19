@@ -286,7 +286,7 @@
     
         <nav class="navbar">
             <a class="nav-link" href={% url 'mainscreen' %}>Application</a>
-            <a class="nav-link" href={% url 'about' %}>About</a>
+            <a class="nav-link" href="#">About</a>
             <a class="nav-link" href="#">Service</a>
             <a class="nav-link" href="#">More</a>
             {% if request.user.is_authenticated %}
@@ -299,46 +299,35 @@
 
     <section class="home" id="home">
         <div class="image">
-            <img src="https://i.postimg.cc/ZR05rFkY/Radiography-bro.png" alt="">
+            <img src="https://i.postimg.cc/zBx5hZtp/qtalogo.png" alt="">
         </div>
         
         <div class="content">
-            <h3>Welcome to QTA</h3>
+            <h3>Why this logo?</h3>
             <p>
-                Our QTA software is designed to simplify and optimise your support
-                experience. Whether you run a business, a healthcare organisation
-                or any entity that requires an effective technical problem management
-                system, QTA is here to make your life easier.
+                The QTA logo is a green heart with a heartbeat behind it. The heart
+                represents the care and attention given to patients, while the heartbeat
+                represents the efficiency and effectiveness of the system. The logo is a 
+                symbol of hope and optimism, and represents the belief that QTA can help 
+                improve healthcare and the quality of life for patients.
             </p>
-            <a href={% url "mainscreen" %} class="btn">Get Start <span class="fas fa-chevron-right"></span></a>
         </div>
 
     </section>
 
-    <section class="icons-container">
-        <div class="icons">
-            <i class="fas fa-user-md"></i>
-            <h3>+140</h3>
-            <p>assistants at work</p>
+    <section class="home" id="home">
+        
+        <div class="content">
+            <h3>Do more, wait less</h3>
+            <p>
+                The slogan "Do more, wait less" encapsulates the essence of our request 
+                management system, QTA. With QTA, users can accomplish a greater number 
+                of tasks in less time, boosting productivity and efficiency. Furthermore, 
+                the wait time for responses is significantly reduced, providing a more agile 
+                and satisfying experience for users.
+            </p>
         </div>
 
-        <div class="icons">
-            <i class="fas fa-users"></i>
-            <h3>+1040</h3>
-            <p>satisfied patients</p>
-        </div>
-
-        <div class="icons">
-            <i class="fas fa-procedures"></i>
-            <h3>+500</h3>
-            <p>bed facility</p>
-        </div>
-
-        <div class="icons">
-            <i class="fas fa-hospital"></i>
-            <h3>+80</h3>
-            <p>hospitals present</p>
-        </div>
     </section>
 
     <footer class="footer-container">
