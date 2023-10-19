@@ -411,19 +411,19 @@
          {% endif %}
          {% endfor %}
          {% for ticket in tickets %}
-         {% if ticket.state == "Completed" %}
+         {% if ticket.state == searchState %}
          <div class="icons">
             <h5 class="Number_ticket">{{ ticket.ticket_number }}</h5>
             <b>Contact Name: </b><p class="name">{{ ticket.contact_name }}</p>
             <b>Call Time: </b><p class="call_time">{{ ticket.call_time }}</p>
             <b>Time Elapse: </b><p class="time_elapse">{{ ticket.time_elapse }}</p>
             <b>Priority: </b><p>{{ ticket.priority }}</p>
-            <b>Discussion: </b><p class="discussion">{{ ticket.discussion}}</p>
-            <b>Place: </b><p class="place">{{ ticket.place}}</p>
+            <b>Discussion: </b><p class="discussion">{{ ticket.discussion }}</p>
+            <b>Place: </b><p class="place">{{ ticket.place }}</p>
             <a href={% url "more_info" ticket.ticket_number %} class="btn btn-primary">More Information</a>
-        </div>
-        {% endif %}
-        {% endfor %}
+         </div>
+         {% endif %}
+         {% endfor %}
       </section>
     
    </body>
