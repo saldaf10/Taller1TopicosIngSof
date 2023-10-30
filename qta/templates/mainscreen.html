@@ -319,21 +319,21 @@
    </head>
     
    <body>
-      <header class="header">
-         <a href={% url 'home' %} class="logo"><i class="fas fa-heartbeat"></i> QTA</a>
-     
-         <nav class="navbar">
-             <a class="nav-link" href={% url 'mainscreen' %}>Application</a>
-             <a class="nav-link" href={% url 'about' %}>About</a>
-             <a class="nav-link" href="#">Service</a>
-             <a class="nav-link" href="#">More</a>
-             {% if request.user.is_authenticated %}
-             <a class="nav-link" href={% url "exit" %}>Sign out</a>
-             {% else %}
-             <a class="nav-link" href={% url "login" %} >Sign in</a>
-             {% endif %}
-         </nav>
-     </header>
+    <header class="header">
+        <a href={% url 'home' %} class="logo"><i class="fas fa-heartbeat"></i> QTA</a>
+    
+        <nav class="navbar">
+            <a class="nav-link" href={% url 'mainscreen' %}>Application</a>
+            <a class="nav-link" href={% url 'about' %}>About</a>
+            <a class="nav-link" href={% url 'stadistics' %}>Stadistics</a>
+            <a class="nav-link" href="#">More</a>
+            {% if request.user.is_authenticated %}
+            <a class="nav-link" href={% url "exit" %}>Sign out</a>
+            {% else %}
+            <a class="nav-link" href={% url "login" %} >Sign in</a>
+            {% endif %}
+        </nav>
+    </header>
 
 
      <section class="searchBar"> 

@@ -299,46 +299,67 @@
 
     <section class="home" id="home">
         <div class="image">
-            <img src="https://i.postimg.cc/ZR05rFkY/Radiography-bro.png" alt="">
+            <img src="https://i.postimg.cc/k4QShgFq/Chat-bot-bro.png" alt="">
         </div>
         
         <div class="content">
-            <h3>Welcome to QTA</h3>
+            <h3>Hi! {{ user.username | upper}}</h3>
             <p>
-                Our QTA software is designed to simplify and optimise your support
-                experience. Whether you run a business, a healthcare organisation
-                or any entity that requires an effective technical problem management
-                system, QTA is here to make your life easier.
+                I am <b>Analytico</b>, your virtual data analysis assistant in the technical support 
+                team of Soportes Medicos. My mission is to help you transform mountains of data 
+                into valuable information to improve the efficiency and quality of our service by 
+                providing you with the information you need to make the right decisions.
             </p>
-            <a href={% url "mainscreen" %} class="btn">Get Start <span class="fas fa-chevron-right"></span></a>
         </div>
 
     </section>
 
-    <section class="icons-container">
-        <div class="icons">
-            <i class="fas fa-user-md"></i>
-            <h3>+140</h3>
-            <p>assistants at work</p>
+    <section class="home" id="home">
+        <div class="image">
+            <img src='https://i.postimg.cc/B6TSYPT8/graph.jpg' alt="">
+        </div>
+        
+        <div class="content">
+            <h3>Grafica #1: Equipo con más reportes</h3>
+            <p>
+                I have come to the conclusion that <b>{{ Max_Equipment }}</b> is the most reported piece of 
+                equipment at the moment, so I think it is necessary to review the design or production 
+                of this equipment.
+            </p>
         </div>
 
-        <div class="icons">
-            <i class="fas fa-users"></i>
-            <h3>+1040</h3>
-            <p>satisfied patients</p>
+    </section>
+
+    <section class="home">
+        <div class="image">
+            <img src='https://i.postimg.cc/C1LpxDjz/graph2.jpg' alt="">
+        </div>
+        
+        <div class="content">
+            <h3>Grafica #2: Histograma de Prioridades</h3>
+            <p>
+                The analysis reveals that the majority of tickets are distributed in <b>{{ Max_Priority }}</b>. This 
+                suggests that it is crucial to efficiently manage <b>{{ Max_Priority }}</b> priority tickets to ensure 
+                customer satisfaction.
+            </p>
         </div>
 
-        <div class="icons">
-            <i class="fas fa-procedures"></i>
-            <h3>+500</h3>
-            <p>bed facility</p>
+    </section>
+
+    <section class="home">
+        <div class="image">
+            <img src='https://i.postimg.cc/Pf13pd11/graph3.jpg' alt="">
+        </div>
+        
+        <div class="content">
+            <h3>Grafica #3: Tarta de Estados</h3>
+            <p>
+                The status pie reveals the distribution of tickets according to their status. It can be seen that most of 
+                the tickets are in the status <b>{{ Max_State }}</b>, which could indicate that efficient work is being 
+                done in the last week.
+            </p>
         </div>
 
-        <div class="icons">
-            <i class="fas fa-hospital"></i>
-            <h3>+80</h3>
-            <p>hospitals present</p>
-        </div>
     </section>
 
     <footer class="footer-container">

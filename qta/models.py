@@ -13,14 +13,9 @@ class Ticket(models.Model):
     equipment = models.CharField(max_length=20)
     contact_number = models.CharField(max_length=20)
     contact_name = models.CharField(max_length=20)
+    Support_name = models.CharField(max_length=20, default="")
     first_follow_up = models.CharField(max_length=500, default="")
     second_follow_up = models.CharField(max_length=500, default="")
     third_follow_up = models.CharField(max_length=500, default="")
     id_unico = models.IntegerField(primary_key=True)
-    def get_time_elapsed(self):
-        """Calcula el tiempo transcurrido desde la llamada."""
-        call_time = self.call_time
-        now = datetime.now(tz=call_time.tzinfo)
-        return now - call_time
-
-    time_elapse = property(get_time_elapsed)
+    time_finish = models.DateTimeField(default=datetime(1, 1, 1, 0, 0, 0))
