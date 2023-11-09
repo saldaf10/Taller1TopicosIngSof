@@ -19,3 +19,4 @@ class Ticket(models.Model):
     third_follow_up = models.CharField(max_length=500, default="")
     id_unico = models.IntegerField(primary_key=True)
     time_finish = models.DateTimeField(default=datetime(1, 1, 1, 0, 0, 0))
+    

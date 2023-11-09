@@ -89,7 +89,6 @@ def ticket(request):
     return render(request, 'ticket.html')
 
 @login_required
-
 def stadistics(request):
     # Datos
     tickets = Ticket.objects.all()
@@ -146,12 +145,16 @@ def stadistics(request):
     tickets_ultima_semana = df[df['call_time'] >= fecha_hace_una_semana]
 
     estado_counts = tickets_ultima_semana['state'].value_counts()
+    
+    if not estado_counts.empty:
+        estado_mas_comun = estado_counts.idxmax()
+    else:
+        estado_mas_comun = "No Value"
 
     plt.pie(estado_counts, labels=estado_counts.index, autopct='%1.1f%%', startangle=140)
     plt.title('Distribución de Estados de Tickets en la Última Semana')
 
     plt.savefig("graph3.jpg")
     
-    estado_mas_comun = estado_counts.idxmax()
 
     return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun})
