@@ -7,6 +7,7 @@ import datetime
 import numpy as np 
 import pandas as pd
 import matplotlib.pyplot as plt
+import csv
 
 # Create your views here.
 def home(request):
@@ -177,20 +178,11 @@ def stadistics(request):
     
     plt.clf()
     
-    # #Grafica 5
-    # completed_tickets = Ticket.objects.filter(state='Completed')
-
-    # # Calcula la diferencia de tiempo en días entre la fecha de finalización y la fecha de inicio
-    # deltas = [(ticket.call_time - ticket.time_finish).days for ticket in completed_tickets]
-
-    # # Convierte las diferencias de tiempo en un DataFrame de pandas
-    # df = pd.DataFrame({'Días para Completar': deltas})
-
-    # # Crea la gráfica de barras
-    # plt.figure()
-    # plt.bar(df.index, df['Días para Completar'], edgecolor='g')
-    # plt.grid(True)
-
-    # plt.savefig("graph6.jpg")
+    tickets = Ticket.objects.all()
+    
+    with open('statistics.csv', "w") as f:
+        f.write(", ".join(['id', 'support', 'person', 'number person', 'place', 'equipment', 'state', 'priority', 'discussion', '1', '2', '3']) + "; \n")
+        for ticket in tickets:
+            f.write(", ".join([ticket.ticket_number, ticket.Support_name, ticket.contact_name, ticket.contact_number, ticket.place, ticket.place, ticket.equipment, ticket.state, ticket.priority, ticket.discussion, ticket.first_follow_up, ticket.second_follow_up, ticket.third_follow_up]) + "; \n")
 
     return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun, 'Max_Place': clinica_mas_comun})
