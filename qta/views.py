@@ -154,7 +154,7 @@ def stadistics(request):
     plt.pie(estado_counts, labels=estado_counts.index, autopct='%1.1f%%', startangle=140)
     plt.title('Distribución de Estados de Tickets en la Última Semana')
 
-    plt.savefig("graph3.jpg")
+    plt.savefig("graph4.jpg")
     
 
     return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun})
