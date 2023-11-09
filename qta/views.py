@@ -122,7 +122,6 @@ def stadistics(request):
     # Crea la gráfica #2: Histograma de Prioridades
     histogram_data = df['priority'].value_counts()
     histogram_data.plot(kind='bar', color='skyblue')
-    plt.title('Histograma de Prioridades')
     plt.xlabel('Prioridad')
     plt.ylabel('Cantidad de Tickets')
     plt.xticks(rotation=0)
@@ -152,9 +151,46 @@ def stadistics(request):
         estado_mas_comun = "No Value"
 
     plt.pie(estado_counts, labels=estado_counts.index, autopct='%1.1f%%', startangle=140)
-    plt.title('Distribución de Estados de Tickets en la Última Semana')
 
     plt.savefig("graph4.jpg")
     
+    plt.clf()
+    
+    
+    # Grafica 4
+    df = pd.DataFrame(tickets.values('call_time', 'place'))
+    fecha_actual = datetime.datetime.now()
 
-    return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun})
+    fecha_hace_una_semana = fecha_actual - datetime.timedelta(days=7)
+    fecha_hace_una_semana = pd.to_datetime(fecha_hace_una_semana, utc=True)
+
+    tickets_ultima_semana = df[df['call_time'] >= fecha_hace_una_semana]
+
+    estado_counts = tickets_ultima_semana['place'].value_counts()
+    
+    plt.barh(estado_counts.index, estado_counts)
+    plt.yticks(rotation=90)
+    
+    clinica_mas_comun = estado_counts.idxmax()
+
+    plt.savefig("graph5.jpg")
+    
+    plt.clf()
+    
+    # #Grafica 5
+    # completed_tickets = Ticket.objects.filter(state='Completed')
+
+    # # Calcula la diferencia de tiempo en días entre la fecha de finalización y la fecha de inicio
+    # deltas = [(ticket.call_time - ticket.time_finish).days for ticket in completed_tickets]
+
+    # # Convierte las diferencias de tiempo en un DataFrame de pandas
+    # df = pd.DataFrame({'Días para Completar': deltas})
+
+    # # Crea la gráfica de barras
+    # plt.figure()
+    # plt.bar(df.index, df['Días para Completar'], edgecolor='g')
+    # plt.grid(True)
+
+    # plt.savefig("graph6.jpg")
+
+    return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun, 'Max_Place': clinica_mas_comun})

@@ -321,7 +321,7 @@
         </div>
         
         <div class="content">
-            <h3>Grafica #1: Equipo con más reportes</h3>
+            <h3>Graph #1: Equipment with the most reports</h3>
             <p>
                 I have come to the conclusion that <b>{{ Max_Equipment }}</b> is the most reported piece of 
                 equipment at the moment, so I think it is necessary to review the design or production 
@@ -337,7 +337,7 @@
         </div>
         
         <div class="content">
-            <h3>Grafica #2: Histograma de Prioridades</h3>
+            <h3>Graph #2: Histogram of Priorities</h3>
             <p>
                 The analysis reveals that the majority of tickets are distributed in <b>{{ Max_Priority }}</b>. This 
                 suggests that it is crucial to efficiently manage <b>{{ Max_Priority }}</b> priority tickets to ensure 
@@ -353,7 +353,7 @@
         </div>
         
         <div class="content">
-            <h3>Grafica #3: Tarta de Estados</h3>
+            <h3>Graph #3: State Cake</h3>
             <p>
                 The status pie reveals the distribution of tickets according to their status. It can be seen that most of 
                 the tickets are in the status <b>{{ Max_State }}</b>, which could indicate that efficient work is being 
@@ -362,6 +362,40 @@
         </div>
 
     </section>
+
+    <section class="home">
+        <div class="image">
+            <img src="{% static '/graph5.jpg' %}">
+        </div>
+        
+        <div class="content">
+            <h3>Graph #4: Clinic Early Warning</h3>
+            <p>
+                The clinic with the most tickets is <b>{{ Max_Place }}</b> so it is possible to assume a bad handling of the implements by 
+                the medical team of <b>{{ Max_Place }}</b>, it is advisable to clarify how to use the implements, otherwise see more in depth 
+                what is going on.
+                
+            </p>
+        </div>
+
+    </section>
+
+    {% comment %} <section class="home">
+        <div class="image">
+            <img src="{% static '/graph6.jpg' %}">
+        </div>
+        
+        <div class="content">
+            <h3>Graph #5: Clinic Early Warning</h3>
+            <p>
+                The clinic with the most tickets is <b>{{ Max_Place }}</b> so it is possible to assume a bad handling of the implements by 
+                the medical team of <b>{{ Max_Place }}</b>, it is advisable to clarify how to use the implements, otherwise see more in depth 
+                what is going on.
+                
+            </p>
+        </div>
+
+    </section> {% endcomment %}
 
     <footer class="footer-container">
         <div class="footer-content">
