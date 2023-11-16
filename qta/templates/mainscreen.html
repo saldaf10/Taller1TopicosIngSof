@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
    <head>
@@ -420,6 +421,13 @@
          {% endif %}
          {% endfor %}
       </section>
+
+      <section>        
+        <div class="content">
+            <h3>Download CSV</h3>
+            <a href="{% static '/ticketData.csv' %}" download="ticketData.csv" class="btn">Descargar CSV <span class="fas fa-chevron-right"></span></a>>
+        </div>
+    </section>
     
    </body>
 </html>

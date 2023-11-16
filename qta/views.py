@@ -28,6 +28,12 @@ def mainscreen(request):
         tickets = Ticket.objects.filter(state__icontains=searchState)
     else:
           tickets = Ticket.objects.all()
+
+    with open('ticketData.csv', "w") as f:
+        f.write(", ".join(['id', 'support', 'person', 'number person', 'place', 'equipment', 'state', 'priority', 'discussion', '1', '2', '3']) + "; \n")
+        for ticket in tickets:
+            f.write(", ".join([ticket.ticket_number, ticket.Support_name, ticket.contact_name, ticket.contact_number, ticket.place, ticket.place, ticket.equipment, ticket.state, ticket.priority, ticket.discussion, ticket.first_follow_up, ticket.second_follow_up, ticket.third_follow_up]) + "; \n")
+
     return render(request, 'mainscreen.html',{'searchState':searchState, 'tickets':tickets})
 
 def more_info(request, id_unico):
@@ -185,8 +191,8 @@ def stadistics(request):
     tickets = Ticket.objects.all()
     
     with open('statistics.csv', "w") as f:
-        f.write(", ".join(['id', 'support', 'person', 'number person', 'place', 'equipment', 'state', 'priority', 'discussion', '1', '2', '3']) + "; \n")
+        f.write(", ".join(['Max_Equipment', 'Max_Priority', 'Max_State', 'Max_Place']) + "; \n")
         for ticket in tickets:
-            f.write(", ".join([ticket.ticket_number, ticket.Support_name, ticket.contact_name, ticket.contact_number, ticket.place, ticket.place, ticket.equipment, ticket.state, ticket.priority, ticket.discussion, ticket.first_follow_up, ticket.second_follow_up, ticket.third_follow_up]) + "; \n")
+            f.write(", ".join([Max[0], max_priority_name, estado_mas_comun, clinica_mas_comun]) + "; \n")
 
     return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun, 'Max_Place': clinica_mas_comun})
