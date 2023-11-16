@@ -172,7 +172,11 @@ def stadistics(request):
     plt.barh(estado_counts.index, estado_counts)
     plt.yticks(rotation=90)
     
-    clinica_mas_comun = estado_counts.idxmax()
+    if not estado_counts.empty:
+        clinica_mas_comun = estado_counts.idxmax()
+    else:
+        clinica_mas_comun = "No Value"
+    
 
     plt.savefig("graph5.jpg")
     
