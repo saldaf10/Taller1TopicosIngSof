@@ -132,3 +132,54 @@ qta/views.py
 ✅ Cumplir con el principio SOLID (DIP).
 
 ✅ Permitir cambiar la fuente de datos en el futuro sin reescribir lógica de negocio.
+
+# Implementación del Patrón Singleton
+
+## ✅ ¿Qué se hizo?
+
+Se implementó el **patrón de diseño Singleton** en la funcionalidad de escritura de archivos CSV. Esto asegura que solo exista una única instancia de la clase encargada de manejar la escritura de archivos CSV en todo el proyecto.
+
+---
+
+## 🔧 ¿Cómo se implementó?
+
+1. **Creación de la clase `CSVWriter`**:
+   - Se creó una clase en `qta/utils/csv_writer.py` que implementa el patrón Singleton.
+   - Esta clase centraliza la lógica de escritura de archivos CSV.
+
+2. **Refactorización de la vista `mainscreen`**:
+   - Se reemplazó la lógica de escritura de archivos CSV en la vista `mainscreen` para utilizar la clase `CSVWriter`.
+
+---
+
+## 🛠️ ¿Por qué se eligió el patrón Singleton?
+
+El patrón Singleton fue elegido porque:
+- **Centralización**: Permite centralizar la lógica de escritura de archivos CSV en una única clase.
+- **Reutilización**: Evita la duplicación de código en diferentes vistas.
+- **Control de instancias**: Garantiza que solo exista una instancia de la clase `CSVWriter`, lo que mejora el control y la consistencia en la escritura de archivos.
+
+---
+
+## 🚀 ¿Cómo mejora la implementación?
+
+1. **Mantenibilidad**:
+   - Si se necesita cambiar la forma en que se escriben los archivos CSV, solo es necesario modificar la clase `CSVWriter`.
+
+2. **Reutilización**:
+   - La clase `CSVWriter` puede ser utilizada en cualquier parte del proyecto sin necesidad de duplicar código.
+
+3. **Escalabilidad**:
+   - Facilita la extensión de la funcionalidad de escritura de archivos CSV en el futuro.
+
+---
+
+## 📂 Cambios realizados en el repositorio:
+
+1. **Archivo creado**:
+   - `qta/utils/csv_writer.py`: Contiene la implementación del patrón Singleton.
+
+2. **Cambios en `views.py`**:
+   - Se refactorizó la vista `mainscreen` para utilizar la clase `CSVWriter`.
+
+

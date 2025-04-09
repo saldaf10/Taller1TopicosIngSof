@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import csv
 from qta.repositories.django_ticket_repository import DjangoTicketRepository
 from qta.services.ticket_creator_service import TicketCreatorService
+from qta.utils.csv_writer import CSVWriter
 
 # Create your views here.
 def home(request):
@@ -31,10 +32,20 @@ def mainscreen(request):
     else:
           tickets = Ticket.objects.all()
 
-    with open('ticketData.csv', "w") as f:
-        f.write(", ".join(['id', 'support', 'person', 'number person', 'place', 'equipment', 'state', 'priority', 'discussion', '1', '2', '3']) + "; \n")
-        for ticket in tickets:
-            f.write(", ".join([ticket.ticket_number, ticket.Support_name, ticket.contact_name, ticket.contact_number, ticket.place, ticket.place, ticket.equipment, ticket.state, ticket.priority, ticket.discussion, ticket.first_follow_up, ticket.second_follow_up, ticket.third_follow_up]) + "; \n")
+    # Preparar datos para el archivo CSV
+    headers = ['id', 'support', 'person', 'number person', 'place', 'equipment', 'state', 'priority', 'discussion', '1', '2', '3']
+    rows = [
+        [
+            ticket.ticket_number, ticket.Support_name, ticket.contact_name, ticket.contact_number,
+            ticket.place, ticket.equipment, ticket.state, ticket.priority, ticket.discussion,
+            ticket.first_follow_up, ticket.second_follow_up, ticket.third_follow_up
+        ]
+        for ticket in tickets
+    ]
+
+    # Usar el Singleton para escribir el archivo CSV
+    csv_writer = CSVWriter()
+    csv_writer.write_csv('ticketData.csv', headers, rows)
 
     return render(request, 'mainscreen.html',{'searchState':searchState, 'tickets':tickets})
 
