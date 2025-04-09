@@ -89,3 +89,46 @@ Framework seguro: Django ofrece características de seguridad integradas, como p
 Gestión de credenciales: Se observa la inclusión del archivo db.sqlite3 en el repositorio, lo que puede exponer datos sensibles. Ya que el proyectoe estuvo en la web siendo usado esto puede ser muy sensible.
 
 Al conocer las urls se pueden saltar algunos pasos como el inicio de sesión y para algunas funciones no es necesario estar ingresado pero la idea era que así fuera.
+
+
+# Inversion de dependencias:
+
+
+## ✅ ¿Qué se hizo?
+
+Se refactorizó la vista `ticket(request)` para aplicar el **principio de Inversión de Dependencias (Dependency Inversion Principle - DIP)**, parte de los principios SOLID.
+
+El objetivo fue **desacoplar la lógica de creación de tickets** del modelo Ticket, mejorando la escalabilidad, mantenibilidad y testabilidad del código.
+
+---
+
+##  ¿Cómo se implementó?
+
+### 🔧 1. Creación de una interfaz de abstracción
+
+qta/interfaces/ticket_repository_interface.py
+
+
+###  2. Implementación concreta de la interfaz usando Django ORM
+
+qta/repositories/django_ticket_repository.pY
+
+### 3. Servicio de creación desacoplado del modelo
+
+qta/services/ticket_creator_service.py
+
+### 4. Refactorización de la vista ticket(request)
+
+qta/views.py
+
+##¿Para qué se hizo?
+
+✅ Desacoplar la lógica de negocio del modelo concreto Ticket.
+
+✅ Facilitar pruebas unitarias mediante mocks del repositorio.
+
+✅ Mejorar la mantenibilidad y extensibilidad del código.
+
+✅ Cumplir con el principio SOLID (DIP).
+
+✅ Permitir cambiar la fuente de datos en el futuro sin reescribir lógica de negocio.
