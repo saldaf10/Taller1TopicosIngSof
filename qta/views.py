@@ -11,6 +11,9 @@ import csv
 from qta.repositories.django_ticket_repository import DjangoTicketRepository
 from qta.services.ticket_creator_service import TicketCreatorService
 from qta.utils.csv_writer import CSVWriter
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from qta.models import Ticket, Place, Equipment
 
 # Create your views here.
 def home(request):
@@ -89,21 +92,31 @@ def more_info(request, id_unico):
 
 def ticket(request):
     if request.method == 'POST':
-        data = {
-            'ticket_number': Ticket.objects.count() + 1,
-            'call_time': request.POST.get('call_time'),
-            'priority': request.POST.get('priority'),
-            'discussion': request.POST.get('discussion'),
-            'state': request.POST.get('state'),
-            'place': request.POST.get('place'),
-            'equipment': request.POST.get('equipment'),
-            'contact_number': request.POST.get('contact_number'),
-            'contact_name': request.POST.get('contact_name'),
-        }
+        place_name = request.POST.get('place')
+        place, created = Place.objects.get_or_create(name=place_name)
 
-        repo = DjangoTicketRepository()
-        service = TicketCreatorService(repo)
-        service.execute(data)
+        equipment_name = request.POST.get('equipment')
+        equipment, created = Equipment.objects.get_or_create(name=equipment_name)
+
+        last_ticket = Ticket.objects.order_by('-id_unico').first()
+        id_unico = last_ticket.id_unico + 1 if last_ticket else 1
+
+        ticket = Ticket.objects.create(
+            ticket_number=Ticket.objects.count() + 1,
+            call_time=request.POST.get('call_time'),
+            priority=request.POST.get('priority'),
+            discussion=request.POST.get('discussion'),
+            state=request.POST.get('state'),
+            place=place,  # Asignar la instancia de Place
+            equipment=equipment,  # Asignar la instancia de Equipment
+            contact_number=request.POST.get('contact_number'),
+            contact_name=request.POST.get('contact_name'),
+            Support_name=request.POST.get('Support_name'),
+            first_follow_up=request.POST.get('first_follow_up'),
+            second_follow_up=request.POST.get('second_follow_up'),
+            third_follow_up=request.POST.get('third_follow_up'),
+            id_unico=id_unico,
+        )
 
         return redirect('mainscreen')
 
@@ -122,15 +135,16 @@ def stadistics(request):
         else:
             x[element.equipment] = 1
      
-    Max = ("",-1)      
+    Max = ("", -1)      
     for key in x.keys():
         if x[key] > Max[1]:
-            Max = (key,x[key])
+            Max = (key, x[key])
+
+    x_labels = [str(key) for key in x.keys()]
 
     # Crea la gráfica
     plt.figure()
-    plt.bar(x.keys(), x.values())
-
+    plt.bar(x_labels, x.values()) 
     plt.savefig("graph.jpg")
     
     plt.clf()
@@ -206,7 +220,33 @@ def stadistics(request):
     
     with open('statistics.csv', "w") as f:
         f.write(", ".join(['Max_Equipment', 'Max_Priority', 'Max_State', 'Max_Place']) + "; \n")
-        for ticket in tickets:
-            f.write(", ".join([Max[0], max_priority_name, estado_mas_comun, clinica_mas_comun]) + "; \n")
+        f.write(", ".join([str(Max[0]), str(max_priority_name), str(estado_mas_comun), str(clinica_mas_comun)]) + "; \n")
 
     return render(request, 'stadistics.html', {'Max_Equipment': Max[0], 'Max_Priority' : max_priority_name, 'Max_State': estado_mas_comun, 'Max_Place': clinica_mas_comun})
+
+class TicketListView(ListView):
+    model = Ticket
+    template_name = 'ticket_list.html'
+    context_object_name = 'tickets'
+
+class TicketDetailView(DetailView):
+    model = Ticket
+    template_name = 'ticket_detail.html'
+    context_object_name = 'ticket'
+
+class TicketCreateView(CreateView):
+    model = Ticket
+    template_name = 'ticket_form.html'
+    fields = ['call_time', 'priority', 'discussion', 'state', 'place', 'equipment', 'contact_number', 'contact_name']
+    success_url = reverse_lazy('ticket_list')
+
+class TicketUpdateView(UpdateView):
+    model = Ticket
+    template_name = 'ticket_form.html'
+    fields = ['call_time', 'priority', 'discussion', 'state', 'place', 'equipment', 'contact_number', 'contact_name']
+    success_url = reverse_lazy('ticket_list')
+
+class TicketDeleteView(DeleteView):
+    model = Ticket
+    template_name = 'ticket_confirm_delete.html'
+    success_url = reverse_lazy('ticket_list')

@@ -1,7 +1,2 @@
 Max_Equipment, Max_Priority, Max_State, Max_Place; 
-TSH, Regular, No Value, No Value; 
-TSH, Regular, No Value, No Value; 
-TSH, Regular, No Value, No Value; 
-TSH, Regular, No Value, No Value; 
-TSH, Regular, No Value, No Value; 
-TSH, Regular, No Value, No Value; 
+TCR, Urgent, New, 1; 

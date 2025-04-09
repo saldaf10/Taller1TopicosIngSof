@@ -128,8 +128,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    ''
+    os.path.join(BASE_DIR, "qta/static"),
+    os.path.join(BASE_DIR, ""),
 ]
 
 #variable de redireccion de login y logout

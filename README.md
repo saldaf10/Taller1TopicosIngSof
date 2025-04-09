@@ -182,4 +182,101 @@ El patrón Singleton fue elegido porque:
 2. **Cambios en `views.py`**:
    - Se refactorizó la vista `mainscreen` para utilizar la clase `CSVWriter`.
 
+---
+
+# Implementación del Patrón Template View
+
+## ✅ ¿Qué se hizo?
+
+Se implementó el **Patrón Template View** en las vistas CRUD para los tickets. Esto permite reutilizar lógica común entre las vistas, reduciendo la duplicación de código y mejorando la mantenibilidad.
+
+---
+
+## 🔧 ¿Cómo se implementó?
+
+1. **Creación de vistas genéricas basadas en clases**:
+   - Se crearon vistas genéricas (`ListView`, `DetailView`, `CreateView`, `UpdateView`, `DeleteView`) para manejar las operaciones CRUD de los tickets.
+
+---
+
+## 🛠️ ¿Por qué se eligió el Patrón Template View?
+
+El Patrón Template View fue elegido porque:
+- **Reutilización de código**: Las vistas genéricas eliminan la necesidad de escribir lógica repetitiva.
+- **Claridad**: El código es más limpio y fácil de entender.
+
+---
+
+## 🚀 ¿Cómo mejora la implementación?
+
+1. **Facilidad**:
+   - Es más fácil agregar nuevas funcionalidades a las vistas sin duplicar código.
+
+2. **Mantenibilidad**:
+   - El código es más fácil de mantener y extender en el futuro.
+
+---
+
+## 📂 Cambios realizados en el repositorio:
+
+1. **Archivo modificado**:
+   - `qta/views.py`: Se implementaron las vistas genéricas basadas en clases.
+
+2. **Archivo modificado**:
+   - `qta/urls.py`: Se actualizaron las rutas para usar las vistas genéricas.
+
+---
+
+# Implementación del Patrón de Normalización
+
+## ✅ ¿Qué se hizo?
+
+Se implementó el **Patrón de Normalización** en el modelo `Ticket`. Esto implicó separar las entidades relacionadas, como `Equipment` y `Place`, en modelos independientes para reducir la redundancia de datos y mejorar la integridad de la base de datos.
+
+---
+
+## 🔧 ¿Cómo se implementó?
+
+1. **Creación de modelos normalizados**:
+   - Se crearon los modelos `Equipment` y `Place` para representar equipos y lugares como entidades independientes.
+
+2. **Actualización del modelo `Ticket`**:
+   - Se reemplazaron los campos `equipment` y `place` por claves foráneas que apuntan a los modelos `Equipment` y `Place`.
+
+3. **Migraciones**:
+   - Se generaron y aplicaron migraciones para reflejar los cambios en la base de datos.
+
+---
+
+## 🛠️ ¿Por qué se eligió el Patrón de Normalización?
+
+El Patrón de Normalización fue elegido porque:
+- **Reducción de redundancia**: Los datos relacionados se almacenan en tablas separadas, evitando duplicación.
+- **Integridad referencial**: Las relaciones entre tablas están garantizadas por claves foráneas.
+- **Escalabilidad**: Es más fácil agregar nuevos equipos o lugares sin modificar el modelo `Ticket`.
+
+---
+
+## 🚀 ¿Cómo mejora la implementación?
+
+1. **Estructura de datos mejorada**:
+   - La base de datos ahora está mejor organizada y es más fácil de mantener.
+
+2. **Flexibilidad**:
+   - Es más sencillo agregar o modificar equipos y lugares sin afectar el modelo principal.
+
+3. **Integridad**:
+   - Las relaciones entre los datos están garantizadas, reduciendo errores y redundancias.
+
+---
+
+## 📂 Cambios realizados en el repositorio:
+
+1. **Archivo modificado**:
+   - `qta/models.py`: Se normalizó el modelo `Ticket` y se crearon los modelos `Equipment` y `Place`.
+
+2. **Migraciones**:
+
+
+
 
