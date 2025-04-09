@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import csv
+from qta.repositories.django_ticket_repository import DjangoTicketRepository
+from qta.services.ticket_creator_service import TicketCreatorService
 
 # Create your views here.
 def home(request):
@@ -76,20 +78,21 @@ def more_info(request, id_unico):
 
 def ticket(request):
     if request.method == 'POST':
-        ticket_number = request.POST.get('ticket_number')
-        call_time = request.POST.get('call_time')
-        priority = request.POST.get('priority')
-        discussion = request.POST.get('discussion')
-        state = request.POST.get('state')
-        place = request.POST.get('place')
-        equipment = request.POST.get('equipment')
-        contact_number = request.POST.get('contact_number')
-        contact_name = request.POST.get('contact_name')
-        
-        # Crea el nuevo ticket en la base de datos
-        nuevo_ticket = Ticket(ticket_number=Ticket.objects.count()+1, call_time=call_time, priority=priority, discussion=discussion, state=state, place=place, equipment=equipment, contact_number=contact_number, contact_name=contact_name )
-        nuevo_ticket.save()
-        
+        data = {
+            'ticket_number': Ticket.objects.count() + 1,
+            'call_time': request.POST.get('call_time'),
+            'priority': request.POST.get('priority'),
+            'discussion': request.POST.get('discussion'),
+            'state': request.POST.get('state'),
+            'place': request.POST.get('place'),
+            'equipment': request.POST.get('equipment'),
+            'contact_number': request.POST.get('contact_number'),
+            'contact_name': request.POST.get('contact_name'),
+        }
+
+        repo = DjangoTicketRepository()
+        service = TicketCreatorService(repo)
+        service.execute(data)
 
         return redirect('mainscreen')
 
